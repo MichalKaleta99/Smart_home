@@ -1,0 +1,51 @@
+<body onLoad="renderTime();">
+{% extends "header.html" %}
+{% block title %} Strona główna {% endblock %}
+{% block content %}
+		<div class="container">
+			<a class="weatherwidget-io" href="https://forecast7.com/pl/52d4116d93/poznan/" data-label_1="POZNAŃ" data-theme="metallic" >POZNAŃ</a>
+			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');</script>
+			<h2>
+				<div id="clockDisplay"></div>
+				Poziom oświetlenia: {{ capacitor_percentage_value }} % | {{ digital_percentage_value }} % |  {{ adc_percentage_value }} %<br>
+				Temperatura wewnętrzna: {{ temp_pv }} °C </h2><br>
+				
+				<canvas id="myChart" width="1400" height="400"></canvas>
+				<script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
+				<script>
+					const ctx = document.getElementById('myChart').getContext('2d');
+					const myChart = new Chart(ctx, {
+						type: 'line',
+						data: {
+							labels: {{ labels | safe }},
+							datasets: [{
+								label: 'Temperatura',
+								data: {{ values | safe }},
+								backgroundColor:'rgba(255, 99, 132, 0.2)',
+								borderColor: 'rgba(255, 99, 132, 1)',								
+								borderWidth: 3
+							}]
+						},
+						options: {
+							scales: {
+								x: {
+									ticks: {
+										color: 'white',
+									}
+								},
+								y: {
+									ticks: {
+										color: 'white',
+									},
+									beginAtZero: false								
+								}
+							},
+							responsive: true,							
+						}
+					});
+				</script>			
+			<br><br>  		
+		</div>
+	</div>
+{% endblock %}
+</body>

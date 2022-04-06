@@ -1,0 +1,21 @@
+{% extends "header.html" %}
+{% block title %} Strona główna {% endblock %}
+{% block content %}
+		<div class="container">
+			<h3><br>Rolety<br><br>
+				<form method="POST">		
+					<input type="submit" name="blinds_on"  value="Zasłoń">
+				</form>
+				
+				<form method="POST">		
+					<input type="submit" name="blinds_off" value="Odsłoń">
+				</form>
+				
+				<form method="POST">		
+					<input type="submit" name="blinds_stop" id="stop_btn" value="STOP">
+				</form>
+			</h3>
+		</div>
+	</div>	
+</body>
+{% endblock %}}
