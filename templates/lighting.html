@@ -1,0 +1,30 @@
+{% extends "header.html" %}
+{% block title %} Strona główna {% endblock %}
+{% block content %}
+		<div class="container">
+			<h3>Oświetlenie<br><br>
+			Pomiar 1<br>
+			Poziom oswietlenia: {{ capacitor_percentage_value }} %
+				<form method="POST">
+					<input type="submit" name="ldr_capacitor" value="Zapal">
+				</form>
+			Pomiar 2<br>
+			Poziom oswietlenia: {{ digital_percentage_value }} %
+                <form method="POST">
+					<input type="submit" name="digital_sensor" value="Zapal">
+				</form>
+			Pomiar 3<br>
+    			Poziom oswietlenia: {{ adc_percentage_value }} %
+                <form method="POST">
+					<input type="submit" name="ldr_adc" value="Zapal">
+				</form>
+				<form method="POST">
+					<input type="submit" name="lighting_stop"id="stop_btn"  value="Zgaś">
+				</form>
+				
+			</h3>
+		</div>
+	</div>
+</body>
+{% endblock %}
+

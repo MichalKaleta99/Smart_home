@@ -1,0 +1,34 @@
+{% extends "header.html" %}
+{% block title %} Narzędzia Administratora {% endblock %}
+{% block content %}
+		<div class="container">
+			<h3><br>Narzędzia Administratora<br><br>
+					<a id="login_settings"> Zalogowano jako:  </a>
+					<br>
+								<form method="POST">
+					<input type="submit" name="change_user_password"  value="Zmień hasło">
+				</form>
+			</h3>
+		</div>
+<script type="text/javascript">
+        var name = sessionStorage.getItem("user_name");
+        var permissions = sessionStorage.getItem("is_parent")
+        var is_parent_str = " "
+        if (permissions==1)
+        {
+        var is_parent_str = "rodzic";
+        }
+        if (permissions==0)
+        {
+        var is_parent_str = "dziecko";
+        }
+        document.getElementById("login_settings").innerHTML = "Zalogowano jako: " + name +" ("+is_parent_str+")";
+    </script>
+	</div>
+{% if change_pass %}
+   input is {{value1}}
+   {% else %}
+    input is:
+    {% endif %}
+</body>
+{% endblock %}
